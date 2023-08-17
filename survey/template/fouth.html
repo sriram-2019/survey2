@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CSE Department mission Survey</title>
+<style>
+  
+    body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #f0f0f0;
+    }
+
+    .header {
+        background-color: #00a859;
+        color: #fff;
+        padding: 20px;
+        text-align: center;
+    }
+
+    .header h1 {
+        margin: 0;
+        animation: fadeInDown 1s ease;
+    }
+
+    .container {
+        max-width: 600px;
+        margin: 20px auto;
+        padding: 20px;
+        background-color: #fff;
+        border-radius: 5px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        animation: fadeInUp 1s ease;
+    }
+
+    form {
+        margin-top: 20px;
+    }
+
+    label {
+        display: block;
+        margin-bottom: 10px;
+        font-size: 18px; /* Larger font size */
+        color: #333; /* Darker shade of white */
+    }
+
+    textarea {
+        width: 100%;
+        height: 100px;
+        resize: vertical;
+    }
+
+    input[type="radio"] {
+        margin-right: 5px;
+    }
+
+    input[type="submit"] {
+        background-color: #00a859;
+        color: #fff;
+        border: none;
+        padding: 10px 20px;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+    }
+
+    input[type="submit"]:hover {
+        background-color: #007944;
+    }
+
+    @keyframes fadeInDown {
+        0% {
+            opacity: 0;
+            transform: translateY(-20px);
+        }
+        100% {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    @keyframes fadeInUp {
+        0% {
+            opacity: 0;
+            transform: translateY(20px);
+        }
+        100% {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+</style>
+
+</head>
+<body>
+    <div class="header">
+        <h1>Mission</h1>
+        <h2>Survey: Mission of CSE Department, VCET, Madurai</h2>
+    </div>
+    <div class="container">
+       <h3>Mission:</h3>  
+<ul>
+    <li>Heightening the knowledge of the faculty in recent trends through continuous development programmes.</li>
+    <li>Transforming the students into globally competent and technically well-equipped continue this code            <li>Transforming the students into globally competent and technically well-equipped professionals through comprehensive curriculum and experiential learning.</li>
+    <li>Encouraging research and innovation among both faculty and students to contribute to the field of computer science and its applications.</li>
+    <li>Providing a conducive learning environment that promotes creativity, critical thinking, and ethical values.</li>
+    <li>Strengthening industry partnerships to facilitate internships, placements, and real-world exposure for students.</li>
+</ul>
+
+        <form method="POST">
+            {% csrf_token %}
+            <p><strong>1. Please select one option:</strong></p>
+            <label>
+                <input type="radio" name="mission_option" value="current_mission">
+                The Department should continue with the current mission statement as written.
+            </label>
+            <label>
+                <input type="radio" name="mission_option" value="revised_mission">
+                The Department should consider the following revisons. (Please specify what you feel should be changed).
+            </label>
+            <textarea name="mission_goal" placeholder="Your answer here..."></textarea>
+
+            <br><br>
+            <input type="submit" value="Submit">
+        </form>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            const textarea = $("textarea[name='mission_goal']");
+            const radioButtons = $("input[name='mission_option']");
+            
+            // Disable textarea by default
+            textarea.prop("disabled", true);
+            
+            // Enable textarea when the second radio button is selected
+            radioButtons.on("change", function() {
+                if ($(this).val() === "revised_mission") {
+                    textarea.prop("disabled", false);
+                } else {
+                    textarea.prop("disabled", true);
+                }
+            });
+            
+            // AJAX submission
+            $("form").on("submit", function(event) {
+                event.preventDefault();
+                const selectedRadio = $("input[name='mission_option']:checked").val();
+                const missionGoal = $("textarea[name='mission_goal']").val();
+    
+                if (!selectedRadio) {
+                    alert("Please select an option before submitting.");
+                    return;
+                }
+    
+                // Prepare the data to be sent to the server
+                const formData = {
+                    mission_option: selectedRadio,
+                    mission_goal: missionGoal,
+                    csrfmiddlewaretoken: $("input[name='csrfmiddlewaretoken']").val() // Add CSRF token
+                };
+    
+                // Send the data using AJAX
+                $.ajax({
+                    type: "POST",
+                    url: "/third.html/thirs/fourth/",  // Replace with your actual view URL
+                    data: formData,
+                    success: function(response) {
+                        // Handle the response from the server (if needed)
+                        console.log(response);
+                        // Redirect if desired
+                        window.location.href = 'fourth';
+                    },
+                    error: function(xhr, status, error) {
+                        console.error(error);
+                    }
+                });
+            });
+        });
+    </script>
+
+</body>
+</html>
+
+
+
+

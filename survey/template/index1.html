@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Department Description</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: rgb(248, 250, 248);
+        }
+        .background-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('{% static "C:/Users/srira/OneDrive/Desktop/survey/css/download.jpeg" %}');
+            background-size: 30%; /* Adjust the background size */
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-position: center center;
+            filter: blur(1px); /* Apply a blur effect to the background image */
+            z-index: -1;
+        }
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            position: relative;
+        }
+        .header {
+            background-color: transparent;
+            color: rgb(77, 237, 3);
+            padding: 10px;
+            text-align: center;
+        }
+        .content {
+            padding: 20px;
+            text-align: left;
+            background-color: rgba(255, 255, 255, 0.8);
+            border-radius: 10px;
+            margin-top: 20px;
+        }
+        .autonomous {
+            display: block;
+            text-align: center;
+            font-size: 1.4em;
+            color: rgb(48, 228, 8);
+        }
+        .important {
+            font-size: 1.2em;
+            font-weight: bold;
+            color: #333;
+        }
+        .medium {
+            font-size: 1.1em;
+            color: rgb(15, 15, 15);
+        }
+        .center-text {
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="background-container"></div>
+    <div class="container">
+        <div class="header">
+            <h1>Velammal College of Engineering and Technology, Madurai</h1>
+            <span class="autonomous">(Autonomous)</span>
+            <h2>Department of Computer Science and Engineering</h2>
+        </div>
+        
+        <div class="center-text">
+            <p class="important">Survey form for Vision, Mission, PEOs and PSOs</p>
+        </div>
+        <p class="medium">Welcome to the Department of CSE, Velammal College of Engineering and Technology, Madurai!!!</p>
+        <p class="medium">The Department of Computer Science and Engineering serves as a centre of excellence for teaching of computer science and research. It was established in the year 2007 with 60 students and 4 faculty members. Now it has expanded up to 477 students and 21 faculty members. The department offers both Under Graduate and Post Graduate courses in CSE. The department has got well equipped computer lab with centralized monitoring facility and it is an approved Research Centre of Anna University, Chennai. The Department has signed MoUs with CICSO, TYCO Electronics and Pearson VUE authorized testing center and has received funds of Rs.111.96 lakhs  for Research &amp; Development work.</p>
+        <p class="medium">The Department functions with well qualified, experienced and dedicated faculty members which lead to requisite teaching and research requirements. The curriculum covers all streams of Computer Science and Engineering such as Hardware and System Programming, Application Development, Networking and distributed computing, Data Engineering and Data Analytics and Software Engineering.</p>
+    </div>
+</body>
+</html>

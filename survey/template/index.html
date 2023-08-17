@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Department Description</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        .header {
+            background-color: green;
+            color: white;
+            padding: 10px;
+            text-align: center;
+        }
+        .content {
+            padding: 20px;
+            max-width: 800px; /* Limit the maximum width of the content */
+            margin: 0 auto;
+            text-align: justify; /* Center the content horizontally */
+        }
+        .autonomous {
+            display: block;
+            text-align: center;
+            font-size: 1.2em;
+            color: rgb(251, 251, 251);
+        }
+        .important {
+            font-size: 1.5em; /* Larger font size for the important text */
+            font-weight: bold; /* Make the text bold */
+            color: #333; /* Darker color for the important text */
+            text-align: center; /* Center-align the "important" paragraph */
+            margin-bottom: 15px; /* Add some space after the paragraph */
+        }
+        .medium {
+    font-size: 1.2em;
+    color: rgb(2, 2, 2);
+    margin-bottom: 15px;
+    text-align: justify; /* Justify the text for a more readable layout */
+    padding-left: -10px; /* Add left padding to create the desired indentation */
+}
+
+        .custom-font {
+            font-family: 'Your Custom Font', sans-serif; /* Specify the custom font */
+            font-size: 1em; /* Set the font size */
+            color: #888; /* Set the font color */
+            line-height: 1.5; /* Set the line height */
+        }
+        .proceed-button {
+    text-align: center;
+    margin-top: 10px; /* Adjust the margin-top value */
+}
+
+.proceed-button button {
+    background-color: green;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    font-size: 1.2em;
+    cursor: pointer;
+}
+
+.proceed-button button:hover {
+    background-color: darkgreen;
+}
+.logo {
+            width: 60px; /* Set a fixed width in pixels */
+            height: auto; /* Set a fixed height in pixels */
+            position: absolute;
+            top: 10px;
+            left: 3px;
+            transform-origin: top left; /* Set the transform origin to the top left corner */
+            transform: scale(1); /* Initial scale value */
+        }
+        @media (max-width: 768px) {
+            .logo {
+                transform: scale(0.8); /* Adjust the scale value for the desired size during zoom */
+            }
+        }
+
+
+
+
+
+    </style>
+</head>
+<body>
+  <form method="POST">
+    {% csrf_token %}
+    <div class="header">
+        <img src="{% static 'C:\Users\srira\Videos\survey\css\download.jpeg'%}" alt="Logo" class="logo">
+        <h1>Velammal College of Engineering and Technology, Madurai</h1>
+        <span class="autonomous">(Autonomous)</span>
+        <h2 style="text-align: center;">Department of Computer Science and Engineering</h2>
+    </div>
+    
+    <div class="content">
+        <p class="important">Survey form for Vision, Mission, PEOs and PSOs</p>
+        <p class="medium">
+          Welcome to the Department of CSE, Velammal College of Engineering and Technology,
+          <span style="white-space: nowrap;">Madurai!!!</span>
+      </p>
+        <p class="medium">The Department of Computer Science and Engineering serves as a centre of excellence for teaching of computer science and research. It was established in the year 2007 with 60 students and 4 faculty members. Now it has expanded up to 477 students and 21 faculty members. The department offers both Under Graduate and Post Graduate courses in CSE. The department has got well equipped computer lab with centralized monitoring facility and it is an approved Research Centre of Anna University, Chennai. The Department has signed MoUs with CICSO, TYCO Electronics and Pearson VUE authorized testing center and has received funds of Rs.111.96 lakhs for Research &amp; Development work.</p>
+        <p class="medium">The Department functions with well qualified, experienced and dedicated faculty members which lead to requisite teaching and research requirements. The curriculum covers all streams of Computer Science and Engineering such as Hardware and System Programming, Application Development, Networking and distributed computing, Data Engineering and Data Analytics and Software Engineering.</p>
+        <hr>
+        <p class="medium">This is the survey form designed to give inputs regarding the Vision, Mission, Program
+          Educational Objectives (PEOs) and Program Specific Outcomes (PSOs).
+        </p >
+          <p class="important">
+          Thank you in advance for spending your valuable time towards filling the survey. Your answers
+          guide us and our department towards further heights.</p>
+      </div>
+      <div class="proceed-button">
+        <button>Proceed</button>
+    </div>
+  </form>
+</body>
+</html>

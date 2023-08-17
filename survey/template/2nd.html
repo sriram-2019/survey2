@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    background-color: #f5f5f5;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+  }
+  .container {
+    width: 80%; /* Adjust the width as needed */
+    margin: 0 auto; /* Center the container horizontally */
+    padding: 20px;
+    border-radius: 5px;
+    background-color: #ffffff;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  }
+  .radio-group {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-bottom: 15px;
+  }
+  .radio-column {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+  }
+  .toggle-content {
+    display: none;
+  }
+  .toggle-content.active {
+    display: block;
+  }
+  h1 {
+    text-align: center;
+  }
+  h2 {
+    margin-top: 20px;
+  }
+  label {
+    display: block;
+    margin-bottom: 10px;
+  }
+  input[type="text"],
+  input[type="email"],
+  input[type="file"] {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+  }
+  .radio-group label {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #f0f0f0;
+    padding: 10px;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+  }
+  .radio-group label:hover {
+    background-color: #e0e0e0;
+  }
+  input[type="radio"] {
+    display: none;
+  }
+  input[type="radio"]:checked + label {
+    background-color: #007bff;
+    color: white;
+  }
+  #submit-button {
+  display: block;
+  width: 20%;
+  margin: 20px auto 0; /* Center horizontally and adjust top margin */
+  padding: 10px;
+  background-color: #00cc00; /* Green color */
+  color: white;
+  border: none;
+  border-radius: 20px; /* Rounded corners */
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.2s ease;
+}
+
+#submit-button:hover {
+  background-color: #009900; /* Darker green color on hover */
+}
+
+</style>
+<title>Stakeholder Information</title>
+</head>
+<body>
+    <form method="post"  id="stakeholder-form" class="container">
+        {% csrf_token %}      
+<div class="container">
+  <h1>Stakeholder Information</h1>
+  <div class="radio-group">
+    <div class="radio-column">
+      <input type="radio" id="student-radio" name="stakeholder" value="student">
+      <label for="student-radio">Department Student</label>
+      
+      <input type="radio" id="staff-radio" name="stakeholder" value="staff">
+      <label for="staff-radio">Department Staff</label>
+    </div>
+    
+    <div class="radio-column">
+      <input type="radio" id="parent-radio" name="stakeholder" value="parent">
+      <label for="parent-radio">Parents</label>
+      
+      <input type="radio" id="industry-radio" name="stakeholder" value="industry">
+      <label for="industry-radio">Industry Person/Recruiter</label>
+    </div>
+    
+    <div class="radio-column">
+      <input type="radio" id="academician-radio" name="stakeholder" value="academician">
+      <label for="academician-radio">Academician</label>
+      
+      <input type="radio" id="alumni-radio" name="stakeholder" value="alumni">
+      <label for="alumni-radio">Alumni</label>
+    </div>
+  </div>
+  
+  <div class="toggle-content" id="student-section">
+    <h2>Student Information</h2>
+    <label>Name of the Student: <input type="text" name="name_student"></label>
+    <label>Batch: <input type="text" name="batch_stu"></label>
+    <label>Mail ID: <input type="email" name="email_stu"></label>
+  </div>
+  
+  <div class="toggle-content" id="staff-section">
+    <h2>Staff Information</h2>
+    <label>Name of the Staff: <input type="text"  name="staff_name"></label>
+    <label>Mail ID: <input type="email" name="staff_email"></label>
+  </div>
+  
+  <div class="toggle-content" id="parent-section">
+    <h2>Parent Information</h2>
+    <label>Name of the Parent: <input type="text" name="parent_name"></label>
+    <label>Son/Daughter of: <input type="text"  name="sd"></label>
+    <label>Batch of your Son/Daughter: <input type="text"  name="batch"></label>
+    <label>Occupation: <input type="text"  name="occupation"></label>
+  </div>
+  
+  <div class="toggle-content" id="industry-section">
+    <h2>Industry Person/Recruiter Information</h2>
+    <label>Name of the Person: <input type="text"  name="indus_name"></label>
+    <label>Working in: <input type="text"  name="working_in"></label>
+    <label>Designation: <input type="text"  name="designation"></label>
+    <label>Official Mail ID: <input type="email"  name="email_ind"></label>
+    <label>Upload ID Card: <input type="file" name="uploads" accept=".jpg, .jpeg, .png"></label>
+  </div>
+  
+  <div class="toggle-content" id="academician-section">
+    <h2>Academician Information</h2>
+    <label>Name of the Academician: <input type="text" name="name_c"></label>
+    <label>Working name of College: <input type="text" name="name_coll"></label>
+    <label>Designation: <input type="text" name="desig"></label>
+    <label>Official Mail ID: <input type="email" name="id"></label>
+    <label>Upload ID Card: <input type="file" name="uploads" accept=".jpg, .jpeg, .png"></label>
+  </div>
+  <div class="toggle-content" id="alumni-section">
+    <h2>Alumni Information</h2>
+    <label>Name of Alumni: <input type="text" name="name_alumni"></label>
+    <label>Batch Studied: <input type="text" name="batchs"></label>
+    <label>Currently Working Company: <input type="text" name="curret"></label>
+    <label>Designation: <input type="text" name="desigs"></label>
+    <label>Official Mail ID: <input type="email" name="em_id"></label>
+    <label>Upload ID Card: <input type="file" name="uploads" accept=".jpg, .jpeg, .png"></label>
+  </div>
+  <div>
+    <button type="submit" id="submit-button">Submit</button>
+  </div>
+</div>
+
+  
+</div>
+</form>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+  $(document).ready(function() {
+    var csrftoken = $("[name=csrfmiddlewaretoken]").val();
+    $.ajaxSetup({
+      beforeSend: function(xhr, settings) {
+        xhr.setRequestHeader("X-CSRFToken", csrftoken);
+      }
+    });
+
+    const form = $('#stakeholder-form');
+    const submitButton = $('#submit-button');
+    const radioButtons = $('input[type="radio"]');
+    const toggleContents = $('.toggle-content');
+
+    form.submit(function(event) {
+      event.preventDefault();
+
+      let isRadioSelected = false;
+      var selectedStakeholder = $('input[name="stakeholder"]:checked').val();
+
+      radioButtons.each(function() {
+        if ($(this).is(':checked')) {
+          isRadioSelected = true;
+        }
+      });
+
+      if (!isRadioSelected) {
+        alert('Please select a stakeholder option.');
+      } else {
+        const selectedContent = $(`#${selectedStakeholder}-section`);
+        const inputs = selectedContent.find('input[type="text"], input[type="email"]');
+        let allInputsFilled = true;
+
+        inputs.each(function() {
+          if ($(this).val() === '') {
+            alert('Please fill in all the fields.');
+            allInputsFilled = false;
+            return false; // Exit the loop early
+          }
+        });
+
+        if (allInputsFilled) {
+          const fileInput = selectedContent.find('input[type="file"]');
+          const allowedExtensions = ['.jpg', '.jpeg', '.png'];
+          const uploadedFile = fileInput[0].files[0];
+
+          if (uploadedFile) {
+            const fileExtension = uploadedFile.name.split('.').pop().toLowerCase();
+
+            if (allowedExtensions.indexOf(`.${fileExtension}`) === -1) {
+              alert('Please upload only .jpg, .jpeg, or .png files.');
+              return;
+            }
+          }
+
+          // Form data is valid, prepare and send the AJAX request
+          const form_data = new FormData(form[0]);
+          $.ajax({
+            type: 'POST',
+            url: '/get_data/',
+            data: form_data,
+            processData: false,
+            contentType: false,
+            success: function(data) {
+              window.location.href = '/third.html';
+            },
+            error: function(xhr) {
+              if (xhr.responseJSON && xhr.responseJSON.error) {
+                alert(xhr.responseJSON.error);
+              } else {
+                alert('An error occurred during form submission.');
+              }
+            }
+          });
+        }
+      }
+    });
+
+    radioButtons.change(function() {
+      toggleContents.removeClass('active');
+      const selectedContent = $(`#${$(this).val()}-section`);
+      selectedContent.addClass('active');
+    });
+  });
+</script>
+
+
+  
+
+</body>
+</html>
